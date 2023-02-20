@@ -1,13 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Handman : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textField;
     [SerializeField] private int hp = 7;
     [SerializeField] private TextMeshProUGUI _textFieldTwo;
+    [SerializeField] private TextMeshProUGUI _textFieldG;
+    [SerializeField] private TextMeshProUGUI _textFieldY;
+    [SerializeField] private TextMeshProUGUI _textFieldB;
+    [SerializeField] private TextMeshProUGUI _textFieldA;
+    [SerializeField] private TextMeshProUGUI _textFieldL;
+    [SerializeField] private TextMeshProUGUI _textFieldO;
+    [SerializeField] private TextMeshProUGUI _textFieldW;
+    [SerializeField] private TextMeshProUGUI _textFieldE;
+    [SerializeField] private TextMeshProUGUI _textFieldV;
+    [SerializeField] private TextMeshProUGUI _textFieldQ;
+    [SerializeField] private TextMeshProUGUI _textFieldS;
+    [SerializeField] private TextMeshProUGUI _textFieldM;
+    [SerializeField] private TextMeshProUGUI _textFieldR;
+    [SerializeField] private TextMeshProUGUI _textFieldJ;
+    [SerializeField] private TextMeshProUGUI _textFieldK;
+    [SerializeField] private TextMeshProUGUI _textFieldI;
+    [SerializeField] private TextMeshProUGUI _textFieldC;
+    [SerializeField] private TextMeshProUGUI _textFieldT;
+    [SerializeField] private TextMeshProUGUI _textFieldX;
+    [SerializeField] private TextMeshProUGUI _textFieldU;
+    [SerializeField] private TextMeshProUGUI _textFieldH;
+    
+    [SerializeField] private TextMeshProUGUI _textFieldAny;
         
         private List<char> guessedLetters = new List<char>();
         private List<char> wrongTriedLetter = new List<char>();
@@ -45,6 +70,11 @@ public class Handman : MonoBehaviour
                     ProcessKey(e.keyCode);
                     
                     lastKeyPressed = e.keyCode;
+
+                    // (lastKeyPressed == KeyCode.G)
+                    //{
+                    //    _textFieldG.color = new Color(0, 25, 0);
+                    //}
                 }
             }
         }
@@ -67,7 +97,9 @@ public class Handman : MonoBehaviour
 
                 if (hp <= 0)
                 {
-                    print("You Lost!");
+                    print("You Lose!");
+                    string Lose = "You Lose";
+                    _textFieldTwo.text = Lose;
                 }
                 else
                 {
@@ -101,9 +133,15 @@ public class Handman : MonoBehaviour
                 print("You win!");
                 _textFieldTwo.text = Win;
             }
-            
+
             // print(string.Join(", ", guessedLetters));
             print(stringToPrint);
             _textField.text = stringToPrint;
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                _textFieldG.color = Color.red;
+            }
+
         }
 }
